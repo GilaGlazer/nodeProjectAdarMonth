@@ -25,7 +25,9 @@ exports.postProducer = async (req, res) => {
         await producer.save();
         console.log(producer);
         
-        res.status(201).json({ producer });
+        //res.status(201).json({ producer });
+        res.status(201).json(producer);
+
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
