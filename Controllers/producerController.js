@@ -15,19 +15,9 @@ exports.getProducerByEmail = async (req, res) => {
 
 exports.postProducer = async (req, res) => {
     try {
-        // const producer = new Producer({
-        //     name: req.body.name,
-        //     email: req.body.email,
-        //     phone: req.body.phone,
-        //     descreption: req.body.descreption,
-        // });
         const producer = new Producer(req.body);
         await producer.save();
-        console.log(producer);
-        
-        //res.status(201).json({ producer });
         res.status(201).json(producer);
-
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

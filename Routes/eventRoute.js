@@ -4,7 +4,7 @@ const router = express.Router();
 const eventController = require('../Controllers/eventController');
 
 router.get('/',eventController.getEvents);
-router.get('/:id',eventController.getEventById);
+router.get('/:producerEmail',eventController.getEventById);
 router.post('/',eventController.postEvent);
 router.put('/:id',eventController.putEvent);
 router.delete('/:id',eventController.deleteEvent);
