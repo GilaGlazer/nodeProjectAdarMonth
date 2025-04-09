@@ -13,7 +13,6 @@ exports.getEvents = async (req, res) => {
 exports.getEventById = async (req, res) => {
     try {
         const event = await eventModel.findById(req.params.id);
-        //const event = await eventModel.findById(req.params.producerEmail).populate('producerEmail');
         if (!event)
             return res.status(404).json({ messege: "event not found" });
         res.json(event);
@@ -21,27 +20,6 @@ exports.getEventById = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
-// exports.getEventByEmail = async (req, res) => {
-//     try {
-//         //const event = await eventModel.findById(req.params.id);
-//         const event = await eventModel.findOne({ producerEmail: req.params.email }).populate('producerEmail');
-//         if (!event)
-//             return res.status(404).json({ messege: "event not found" });
-//         res.json(event);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// }
-
-// exports.postEvent = async (req, res) => {
-//     try {
-//         const event = new Event(req.body);
-//         await event.save();
-//         res.status(201).json(event);
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// }
 
 exports.postEvent = async (req, res) => {
     try {
@@ -74,19 +52,7 @@ exports.putEvent = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 }
-
-// exports.deleteEvent = async (req, res) => {
-//     try {
-//         const event = await eventModel.findByIdAndDelete(req.params.id);
-//         if (!event)
-//             return res.status(404).json({ messege: "Event not found" });
-//         res.json({ messege: "Event deleted successfuly" });
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// }
 exports.deleteEvent = async (req, res) => {
-    console.log("Deleting event with ID:", req.params.id); // לוג של ה-ID
     try {
         const event = await eventModel.findByIdAndDelete(req.params.id);
         if (!event) {
